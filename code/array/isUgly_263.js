@@ -27,47 +27,20 @@ export default (num) => {
   // return isUgly(num)
 
   // 方法2
-  // if(num <= 0) return false
-  // if(num <= 6) return true
-
-  // while (!(num % 2)) {
-  //     num = num >>> 1
-  // }
-
-  // while (!(num % 3)) {
-  //     num = Math.floor(num / 3)
-  // }
-
-  // while (!(num % 5)) {
-  //     num = Math.floor(num / 5)
-  // }
-
-  // if(num > 6) {
-  //     return false
-  // } else {
-  //     return true
-  // }
-
-  // 方法3, 效率差
   if (num <= 0) return false
   if (num <= 6) return true
 
-  let prime = (n) => {
-    let arr = []
-
-    for (let i = 2; i <= n / 2; i++) {
-      if (n % i === 0 && !prime(i).length) {
-        arr.push(i)
-      }
-    }
-    return arr
+  while (num % 2 === 0) {
+    num = num >>> 1
   }
 
-  let primes = prime(num)
-  // console.log(primes)
-  let len = primes.length
-  if (len > 3 || primes) return false
-  if (primes[len - 1] > 5) return false
+  while (num % 3 === 0) {
+    num = Math.floor(num / 3)
+  }
 
-  return true
+  while (num % 5 === 0) {
+    num = Math.floor(num / 5)
+  }
+
+  return num === 1
 }
